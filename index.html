@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #calci{
+            margin-top:200px;
+            position: relative;
+            margin:auto;
+            width: 380px;
+            height: 600px;
+            border:1px solid black;
+            border-radius: 15px;
+            background-color: lightblue;
+            margin-top:100px;
+        }
+        #display{
+            position:absolute;
+            width: 100%;
+            height: 100px;
+            border-bottom: 1px solid black;
+            border-radius: inherit;
+            background-color: light;
+        }
+        #buttons{
+            position: absolute;
+            width: 100%;
+            height: 500px;
+            /* border: 1px solid black; */
+            bottom: 0%;
+            border-radius: inherit;
+        }
+        .button{
+            position: relative;
+            display: inline-block;
+            margin:10px;
+            height: 70px;
+            width: 70px;
+            border-radius: 50%;
+            /* border:  1px solid red; */
+            background-color: antiquewhite;
+        }
+        .button span{
+            position: absolute;
+            top:28%;
+            left:36%;
+            font-size: 30px;
+        }
+
+        #displayNum{
+            font-size: 40px;
+
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <div id="calci">
+        <div id="display" dir="rtl">
+            <p id="displayNum"></p>
+        </div>
+        <div id="buttons">
+            <div class="button" id="ac">
+                <span style="left:15px;">AC</span>
+            </div>
+            <div class="button"  id="ln"><span>ln</span></div>
+            <div class="button" id="^"><span>^</span></div>
+            <div class="button" id="remainder"><span>%</span></div>
+            <div class="button" id="nine"><span>9</span></div>
+            <div class="button" id="eight"><span>8</span></div>
+            <div class="button" id="seven"><span >7</span></div>
+            <div class="button" id="divide"><span>/</span></div>
+            <div class="button" id="six"><span>6</span></div>
+            <div class="button" id="five"><span>5</span></div>
+            <div class="button" id="four"><span>4</span></div>
+            <div class="button" id="multiply"><span>*</span></div>
+            <div class="button" id="three"><span>3</span></div>
+            <div class="button" id="two"><span>2</span></div>
+            <div class="button" id="one"><span>1</span></div>
+            <div class="button" id="sum"><span>+</span></div>
+            
+            <div class="button" id ="zero"style="height: 70px; width: 160px; border-radius: 28px;" >
+                <span>0</span>
+            </div>
+            <div class="button" id="substraction"><span>-</span></div>
+            
+            <div class="button" id="equal"><span>=</span></div>
+            
+        </div>
+    </div>
+
+    <script>
+
+        var sum = 0;
+        var num1 = 0;
+        var num2 = 0;
+        var operation ;
+
+        var p = document.getElementById("displayNum");
+        var sum_2 = document.getElementById('sum');
+        var substraction_2 = document.getElementById('substraction');
+        var multiply_2 = document.getElementById('multiply');
+        var divide_2 = document.getElementById('divide');
+        
+        var equal_2  = document.getElementById('equal');
+        var allClear_2  = document.getElementById('ac');
+        
+    
+        
+        sum_2.addEventListener('click',sum2);
+        substraction_2.addEventListener('click',diff2);
+        multiply_2.addEventListener('click',multiply2);
+        divide_2.addEventListener('click',divide2);
+        allClear_2.addEventListener('click',allClear);
+        allClear_2.addEventListener('click',allClear)
+        equal_2.addEventListener('click',equalTo);
+        
+        function sum2(event){
+            num1 = sum + num1;
+            sum = 0;
+            p.innerHTML="";
+            operation = '+';
+        }
+        function diff2(event){
+            num1 = sum;
+            sum = 0;
+            p.innerHTML="";
+            operation = '-';
+        }
+        function multiply2(event){
+            num1 = sum;
+            sum = 0;
+            p.innerHTML="";
+            operation = '*';
+        }
+        function divide2(event){
+            num1 = sum;
+            sum = 0;
+            p.innerHTML="";
+            operation = '/';
+        }
+        function equalTo(event){
+            num2 = sum;
+            sum = 0;
+
+            if(operation == '+')  sum = num1 + num2;
+            if(operation == '-') sum = num1 - num2;
+            if(operation == '*') sum = num1 * num2;
+            if(operation == '/') sum = num1/num2;
+            if(operation == '%') sum = num1 % num2;
+            
+            num1 = 0;
+            num2 = 0;
+
+            p.innerHTML = "";
+            p.innerHTML = sum;
+            // sum = 0;
+        }
+        function allClear(event){
+            sum = 0;
+            num1 = 0;
+            num2 = 0;
+            p.innerHTML = "";
+        }
+             
+       
+
+        //nothing not to check below
+
+
+
+
+        var v1 = document.getElementById('one');
+        var v2 = document.getElementById('two');
+        var v3 = document.getElementById('three');
+        var v4 = document.getElementById('four');
+        var v5 = document.getElementById('five');
+        var v6 = document.getElementById('six');
+        var v7 = document.getElementById('seven');
+        var v8 = document.getElementById('eight');
+        var v9 = document.getElementById('nine');
+        var v0 = document.getElementById('zero');
+        
+        v1.addEventListener('click',f1);
+        v2.addEventListener('click',f2);
+        v3.addEventListener('click',f3);
+        v4.addEventListener('click',f4);
+        v5.addEventListener('click',f5);
+        v6.addEventListener('click',f6);
+        v7.addEventListener('click',f7);
+        v8.addEventListener('click',f8);
+        v9.addEventListener('click',f9);
+        v0.addEventListener('click',f0);
+
+        // document.addEventListener("keydown",function(event){
+        //     console.log("rahul");
+        // });
+
+        // function temp (event){
+        //     var press  = ('key down',event.keyCode);
+        //     console.log(press);
+        // }
+
+
+        // document.onkeydown = function (e) {
+        //     console.log(e);
+        //     };
+
+        //don;t use keydown 
+        document.addEventListener('keypress',function(event){
+          var v = (event.keyCode);
+          if(v == 48) f0(event);
+          if(v == 49) f1(event);
+          if(v == 50) f2(event);
+          if(v == 51) f3(event);
+          if(v == 52) f4(event);
+          if(v == 53) f5(event);
+          if(v == 54) f6(event);
+          if(v == 55) f7(event);
+          if(v == 56) f8(event);
+          if(v == 57) f9(event);
+          if(v == 43) sum2(event);
+          if(v == 45) diff2(event);
+          if(v == 42) multiply2(event);
+          if(v == 47) divide2(event);
+          if(v == 13) equalTo(event);
+          console.log(v);
+        })
+
+        document.addEventListener('keydown',function(event){
+            var v = (event.keyCode);
+            if(v == 8) allClear(event); //enter
+            // console.log(v);
+            
+        })
+
+        //keypress not work for arrow  delte shift
+        //but work for backspace
+
+
+
+        
+
+
+
+        function f0(event){
+            sum = sum * 10 + 0;
+            p.innerHTML = sum;
+            
+        }
+
+        function f1(event){
+            sum = sum * 10 + 1;
+            p.innerHTML = sum;
+        }
+        function f2(event){
+            sum = sum * 10 + 2;
+            p.innerHTML = sum;
+        }
+        function f3(event){
+            sum = sum * 10 + 3;
+            p.innerHTML = sum;
+        }
+        function f4(event){
+            sum = sum * 10 + 4;
+            p.innerHTML = sum;
+        }
+        function f5(event){
+            sum = sum * 10 + 5;
+            p.innerHTML = sum;
+        }
+        function f6(event){
+            sum = sum * 10 + 6;
+            p.innerHTML = sum;
+        }
+        function f7(event){
+            sum = sum * 10 + 7;
+            p.innerHTML = sum;
+        }
+        function f8(event){
+            sum = sum * 10 + 8;
+            p.innerHTML = sum;
+        }
+        function f9(event){
+            sum = sum * 10 + 9;
+            p.innerHTML = sum;
+        }
+ 
+
+
+
+
+
+
+
+
+    </script>
+
+
+</body>
+</html>
